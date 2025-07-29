@@ -106,7 +106,7 @@ function App() {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 w-full">
+        <div className="flex justify-center gap-3 w-full">
           {buttons.map((b) => (
             <button
               key={b}
