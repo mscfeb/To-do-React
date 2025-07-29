@@ -15,7 +15,7 @@ const Item = ({ task, todos, setTodos }) => {
   };
 
   return (
-    <div className="w-96 bg-slate-100 text-black p-4 rounded-xl hover:border-purple-800 hover:border-2 flex justify-between items-center">
+    <div className="w-full bg-slate-100 text-black p-4 rounded-xl hover:border-purple-800 hover:border-2 flex justify-between items-center">
       {/* Left: Radio + Task Text */}
       <div className="flex items-center space-x-2 w-[50%]">
         <label className="w-5 h-5 rounded-full border-2 border-purple-800 flex items-center justify-center cursor-pointer">

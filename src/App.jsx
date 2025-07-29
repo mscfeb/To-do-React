@@ -74,12 +74,13 @@ function App() {
   });
 
   return (
-    <div className="flex justify-center min-w-screen items-center min-h-screen scroll-x-auto px-4 py-6 bg-slate-100">
+    <div className="flex justify-center items-center min-h-screen px-4 py-6 bg-slate-100">
       <div className="flex flex-col items-center space-y-6 w-full max-w-xl">
-        {/* Top Button Row */}
-        <div className="flex justify-center items-center w-full flex-wrap gap-3">
+
+        {/* Action Buttons */}
+        <div className="flex justify-center flex-wrap items-center gap-3 w-full">
           <button
-            className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center focus:outline-none"
+            className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center"
             onClick={handleInput}
           >
             <FaPlus className="w-6 h-6 text-white" />
@@ -88,7 +89,7 @@ function App() {
           {undoStack.length > 0 && (
             <button
               onClick={handleUndo}
-              className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center focus:outline-none"
+              className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center"
             >
               <FaUndo className="w-6 h-6 text-white" />
             </button>
@@ -97,7 +98,7 @@ function App() {
           {redoStack.length > 0 && (
             <button
               onClick={handleRedo}
-              className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center focus:outline-none"
+              className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center"
             >
               <FaRedo className="w-6 h-6 text-white" />
             </button>
@@ -105,12 +106,12 @@ function App() {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center items-center gap-3 w-full">
+        <div className="flex flex-wrap justify-center gap-3 w-full">
           {buttons.map((b) => (
             <button
               key={b}
               onClick={() => setFilter(b)}
-              className={`p-2 rounded-3xl text-sm sm:text-base px-4 sm:px-6 focus:outline-none 
+              className={`p-2 rounded-3xl text-sm sm:text-base px-4 sm:px-6 
                 ${
                   filter === b
                     ? "bg-purple-800 text-white"
@@ -123,25 +124,29 @@ function App() {
         </div>
 
         {/* Todo List */}
-        <div className="flex flex-col gap-4 w-full items-center">
-          {filteredTodos.map((task) => (
-            <Item
-              key={task.id}
-              task={task}
-              todos={todos}
-              setTodos={(updated) => {
-                pushUndo();
-                setTodos(updated);
-                setRedoStack([]);
-              }}
-            />
-          ))}
+        <div className="flex flex-col gap-4 w-full items-center min-h-[150px]">
+          {filteredTodos.length > 0 ? (
+            filteredTodos.map((task) => (
+              <Item
+                key={task.id}
+                task={task}
+                todos={todos}
+                setTodos={(updated) => {
+                  pushUndo();
+                  setTodos(updated);
+                  setRedoStack([]);
+                }}
+              />
+            ))
+          ) : (
+            <p className="text-gray-400 text-center">No todos available</p>
+          )}
         </div>
 
         {/* Trash Button */}
         <button
           onClick={handleDelete}
-          className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center focus:outline-none"
+          className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center"
         >
           <FaTrash className="w-6 h-6 text-white" />
         </button>
