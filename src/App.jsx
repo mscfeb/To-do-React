@@ -74,13 +74,13 @@ function App() {
   });
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-4 py-6 bg-slate-100">
+    <div className="flex justify-center min-w-screen items-center min-h-screen px-4 py-6 bg-slate-100">
       <div className="flex flex-col items-center space-y-6 w-full max-w-xl">
 
         {/* Action Buttons */}
         <div className="flex justify-center flex-wrap items-center gap-3 w-full">
           <button
-            className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center focus:outline-none focus:ring-0"
             onClick={handleInput}
           >
             <FaPlus className="w-6 h-6 text-white" />
@@ -89,7 +89,7 @@ function App() {
           {undoStack.length > 0 && (
             <button
               onClick={handleUndo}
-              className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center"
+              className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center focus:outline-none focus:ring-0"
             >
               <FaUndo className="w-6 h-6 text-white" />
             </button>
@@ -98,7 +98,7 @@ function App() {
           {redoStack.length > 0 && (
             <button
               onClick={handleRedo}
-              className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center"
+              className="w-12 h-12 rounded-full bg-purple-800 flex items-center justify-center focus:outline-none focus:ring-0"
             >
               <FaRedo className="w-6 h-6 text-white" />
             </button>
@@ -106,12 +106,12 @@ function App() {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex justify-center gap-3 w-full">
+        <div className="flex justify-center gap-1 sm:gap-3 w-full">
           {buttons.map((b) => (
             <button
               key={b}
               onClick={() => setFilter(b)}
-              className={`p-2 rounded-3xl text-sm sm:text-base px-4 sm:px-6 
+              className={` py-1 sm:p-2 rounded-3xl text-sm sm:text-base px-2 sm:px-6 focus:outline-none focus:ring-0 
                 ${
                   filter === b
                     ? "bg-purple-800 text-white"
